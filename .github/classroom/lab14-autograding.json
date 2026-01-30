@@ -1,0 +1,64 @@
+{
+  "tests": [
+    {
+      "name": "Compilation",
+      "setup": "",
+      "run": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Assignment.h Exists",
+      "setup": "",
+      "run": "test -f Assignment.h && echo \"Assignment.h found\"",
+      "input": "",
+      "output": "Assignment.h found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Assignment Class Structure",
+      "setup": "",
+      "run": "grep -E \"(name|points_earned|points_possible)\" Assignment.h && echo \"Members found\"",
+      "input": "",
+      "output": "Members found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 15
+    },
+    {
+      "name": "getPercentage Method",
+      "setup": "",
+      "run": "grep -E \"getPercentage\" Assignment.h && echo \"Method found\"",
+      "input": "",
+      "output": "Method found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 15
+    },
+    {
+      "name": "Assignment Name Input",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1000\\n900\\n800\\n700\\n600\\nHomework 1\\n100\\n95\\nQuiz 1\\n50\\n-1\" | ./grade_calc",
+      "input": "",
+      "output": "Homework 1",
+      "comparison": "included",
+      "timeout": 30,
+      "points": 25
+    },
+    {
+      "name": "Per-Assignment Percentage",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1000\\n900\\n800\\n700\\n600\\nTest Assignment\\n100\\n80\\nAnother\\n50\\n-1\" | ./grade_calc",
+      "input": "",
+      "output": "80%",
+      "comparison": "included",
+      "timeout": 30,
+      "points": 25
+    }
+  ]
+}

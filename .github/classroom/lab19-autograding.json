@@ -1,0 +1,74 @@
+{
+  "tests": [
+    {
+      "name": "Compilation",
+      "setup": "",
+      "run": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "MathHelper.h Exists",
+      "setup": "",
+      "run": "test -f MathHelper.h && echo \"MathHelper.h found\"",
+      "input": "",
+      "output": "MathHelper.h found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Template Syntax",
+      "setup": "",
+      "run": "grep -E \"template\\s*<\\s*typename\" MathHelper.h && echo \"Template found\"",
+      "input": "",
+      "output": "Template found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 15
+    },
+    {
+      "name": "Sum Template",
+      "setup": "",
+      "run": "grep -E \"(sum|Sum)\" MathHelper.h && echo \"Sum function found\"",
+      "input": "",
+      "output": "Sum function found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Average Template",
+      "setup": "",
+      "run": "grep -E \"(average|Average)\" MathHelper.h && echo \"Average function found\"",
+      "input": "",
+      "output": "Average function found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Statistics with Templates",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n1000\\n90\\n80\\n70\\n60\\n2\\n1\\nHW1\\n100\\n90\\n2\\n1\\nHW2\\n100\\n80\\n4\\n0\" | timeout 20 ./grade_calc",
+      "input": "",
+      "output": "Average",
+      "comparison": "included",
+      "timeout": 25,
+      "points": 20
+    },
+    {
+      "name": "What-If Calculator",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n1000\\n90\\n80\\n70\\n60\\n2\\n1\\nHW1\\n100\\n90\\n6\\n85\\n85\\n85\\n0\" | timeout 20 ./grade_calc",
+      "input": "",
+      "output": "Projected",
+      "comparison": "included",
+      "timeout": 25,
+      "points": 25
+    }
+  ]
+}

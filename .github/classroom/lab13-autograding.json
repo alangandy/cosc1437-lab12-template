@@ -1,0 +1,54 @@
+{
+  "tests": [
+    {
+      "name": "Compilation",
+      "setup": "",
+      "run": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Program Executes",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"n\\n1000\\n900\\n800\\n700\\n600\\n95\\n88\\n-1\\nn\" | ./grade_calc",
+      "input": "",
+      "output": "Final Letter Grade:",
+      "comparison": "included",
+      "timeout": 30,
+      "points": 15
+    },
+    {
+      "name": "Save Function Implemented",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"n\\n1000\\n900\\n800\\n700\\n600\\n95\\n88\\n-1\\ny\" | ./grade_calc && cat grades.txt",
+      "input": "",
+      "output": "1000",
+      "comparison": "included",
+      "timeout": 30,
+      "points": 25
+    },
+    {
+      "name": "Scores Saved to File",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"n\\n1000\\n900\\n800\\n700\\n600\\n95\\n88\\n92\\n-1\\ny\" | ./grade_calc && cat grades.txt",
+      "input": "",
+      "output": "95",
+      "comparison": "included",
+      "timeout": 30,
+      "points": 25
+    },
+    {
+      "name": "Load Function Works",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp && echo -e \"1000\\n900\\n800\\n700\\n600\\n2\\n95\\n88\" > grades.txt",
+      "run": "echo -e \"y\\n-1\\nn\" | ./grade_calc",
+      "input": "",
+      "output": "loaded",
+      "comparison": "included",
+      "timeout": 30,
+      "points": 25
+    }
+  ]
+}

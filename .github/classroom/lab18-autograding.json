@@ -1,0 +1,64 @@
+{
+  "tests": [
+    {
+      "name": "Compilation",
+      "setup": "",
+      "run": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "InputHelper.h Exists",
+      "setup": "",
+      "run": "test -f InputHelper.h && echo \"InputHelper.h found\"",
+      "input": "",
+      "output": "InputHelper.h found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Validation Functions",
+      "setup": "",
+      "run": "grep -E \"(getInt|getFloat|getString)\" InputHelper.h && echo \"Functions found\"",
+      "input": "",
+      "output": "Functions found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 15
+    },
+    {
+      "name": "Handles Invalid Input",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\nabc\\n1000\\n90\\n80\\n70\\n60\\n0\" | timeout 15 ./grade_calc 2>&1 | grep -qi \"error\\|invalid\\|please\" && echo \"VALIDATION_WORKS\"",
+      "input": "",
+      "output": "VALIDATION_WORKS",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 20
+    },
+    {
+      "name": "Range Validation",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n-500\\n1000\\n90\\n80\\n70\\n60\\n0\" | timeout 15 ./grade_calc 2>&1 | grep -qi \"error\\|invalid\\|between\" && echo \"RANGE_WORKS\"",
+      "input": "",
+      "output": "RANGE_WORKS",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 20
+    },
+    {
+      "name": "Error Recovery",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\nabc\\n1000\\n90\\n80\\n70\\n60\\n0\\ny\" | timeout 15 ./grade_calc",
+      "input": "",
+      "output": "GOODBYE",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 25
+    }
+  ]
+}

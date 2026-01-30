@@ -1,0 +1,74 @@
+{
+  "tests": [
+    {
+      "name": "Compilation",
+      "setup": "",
+      "run": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Algorithm Library Included",
+      "setup": "",
+      "run": "grep -E \"#include\\s*<algorithm>\" main.cpp && echo \"Algorithm included\"",
+      "input": "",
+      "output": "Algorithm included",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 15
+    },
+    {
+      "name": "Uses min_element",
+      "setup": "",
+      "run": "grep -E \"min_element\" main.cpp && echo \"min_element found\"",
+      "input": "",
+      "output": "min_element found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 15
+    },
+    {
+      "name": "Uses max_element",
+      "setup": "",
+      "run": "grep -E \"max_element\" main.cpp && echo \"max_element found\"",
+      "input": "",
+      "output": "max_element found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 15
+    },
+    {
+      "name": "Displays Highest Score",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1000\\n900\\n800\\n700\\n600\\n95\\n72\\n88\\n-1\" | ./grade_calc",
+      "input": "",
+      "output": "Highest",
+      "comparison": "included",
+      "timeout": 15,
+      "points": 20
+    },
+    {
+      "name": "Displays Lowest Score",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1000\\n900\\n800\\n700\\n600\\n95\\n72\\n88\\n-1\" | ./grade_calc",
+      "input": "",
+      "output": "Lowest",
+      "comparison": "included",
+      "timeout": 15,
+      "points": 20
+    },
+    {
+      "name": "Program Completes Successfully",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1000\\n900\\n800\\n700\\n600\\n95\\n72\\n88\\n-1\" | ./grade_calc",
+      "input": "",
+      "output": "Final Letter Grade:",
+      "comparison": "included",
+      "timeout": 15,
+      "points": 5
+    }
+  ]
+}

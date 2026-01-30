@@ -1,0 +1,74 @@
+{
+  "tests": [
+    {
+      "name": "Compilation with Separate Files",
+      "setup": "",
+      "run": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp Assignment.cpp",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 15
+    },
+    {
+      "name": "Assignment.cpp Exists",
+      "setup": "",
+      "run": "test -f Assignment.cpp && echo \"Assignment.cpp found\"",
+      "input": "",
+      "output": "Assignment.cpp found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 15
+    },
+    {
+      "name": "Header Has Declarations",
+      "setup": "",
+      "run": "grep -E \"^\\s*(std::string|float|void)\\s+\\w+\\(.*\\)\\s*(const)?\\s*;\" Assignment.h && echo \"Declarations found\"",
+      "input": "",
+      "output": "Declarations found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Scope Resolution Operator",
+      "setup": "",
+      "run": "grep -E \"Assignment::\" Assignment.cpp && echo \"Scope resolution found\"",
+      "input": "",
+      "output": "Scope resolution found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Encapsulation (Private Members)",
+      "setup": "",
+      "run": "grep -E \"private:\" Assignment.h && grep -E \"get(Name|PointsEarned|PointsPossible)\" Assignment.h && echo \"Encapsulation found\"",
+      "input": "",
+      "output": "Encapsulation found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 15
+    },
+    {
+      "name": "Const Methods",
+      "setup": "",
+      "run": "grep -E \"\\)\\s*const\\s*;\" Assignment.h && echo \"Const methods found\"",
+      "input": "",
+      "output": "Const methods found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Program Executes Correctly",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp Assignment.cpp",
+      "run": "echo -e \"1000\\n900\\n800\\n700\\n600\\nHomework 1\\n100\\n95\\nQuiz 1\\n50\\n42\\n-1\" | ./grade_calc",
+      "input": "",
+      "output": "Final Letter Grade:",
+      "comparison": "included",
+      "timeout": 30,
+      "points": 25
+    }
+  ]
+}

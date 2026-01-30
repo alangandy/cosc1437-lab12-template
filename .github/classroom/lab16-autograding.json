@@ -1,0 +1,74 @@
+{
+  "tests": [
+    {
+      "name": "Compilation",
+      "setup": "",
+      "run": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp Assignment.cpp",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "iomanip Included",
+      "setup": "",
+      "run": "grep -E \"#include\\s*<iomanip>\" main.cpp && echo \"iomanip found\"",
+      "input": "",
+      "output": "iomanip found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Menu System",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp Assignment.cpp",
+      "run": "echo -e \"0\" | timeout 5 ./grade_calc",
+      "input": "",
+      "output": "MENU",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 20
+    },
+    {
+      "name": "Grading Scheme Menu Option",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp Assignment.cpp",
+      "run": "echo -e \"1\\n1000\\n90\\n80\\n70\\n60\\n0\" | timeout 10 ./grade_calc",
+      "input": "",
+      "output": "Grading",
+      "comparison": "included",
+      "timeout": 15,
+      "points": 15
+    },
+    {
+      "name": "Add Item Menu Option",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp Assignment.cpp",
+      "run": "echo -e \"1\\n1000\\n90\\n80\\n70\\n60\\n2\\nTest HW\\n100\\n95\\n0\" | timeout 15 ./grade_calc",
+      "input": "",
+      "output": "added",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    },
+    {
+      "name": "View Items Menu Option",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp Assignment.cpp",
+      "run": "echo -e \"1\\n1000\\n90\\n80\\n70\\n60\\n2\\nHomework\\n100\\n85\\n3\\n0\" | timeout 15 ./grade_calc",
+      "input": "",
+      "output": "Homework",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    },
+    {
+      "name": "Formatted Decimals",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp Assignment.cpp",
+      "run": "echo -e \"1\\n1000\\n90\\n80\\n70\\n60\\n2\\nTest\\n100\\n85\\n5\\n0\" | timeout 15 ./grade_calc",
+      "input": "",
+      "output": "85.0",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    }
+  ]
+}

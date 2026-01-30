@@ -1,0 +1,84 @@
+{
+  "tests": [
+    {
+      "name": "Compilation",
+      "setup": "",
+      "run": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Map Header",
+      "setup": "",
+      "run": "grep -E \"#include\\s*<map>\" main.cpp && echo \"Map included\"",
+      "input": "",
+      "output": "Map included",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Category.h Exists",
+      "setup": "",
+      "run": "test -f Category.h && echo \"Category.h found\"",
+      "input": "",
+      "output": "Category.h found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Map Usage",
+      "setup": "",
+      "run": "grep -E \"std::map\\s*<\" main.cpp && echo \"Map used\"",
+      "input": "",
+      "output": "Map used",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Category Setup",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n2\\nHomework\\n30\\nExams\\n0\" | timeout 15 ./grade_calc",
+      "input": "",
+      "output": "70",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    },
+    {
+      "name": "Custom Category Names",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n3\\nLabs\\n20\\nProjects\\n30\\nFinal\\n0\" | timeout 15 ./grade_calc",
+      "input": "",
+      "output": "Labs",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    },
+    {
+      "name": "Weighted Calculation",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n2\\nHomework\\n40\\nExams\\n2\\n90\\n80\\n70\\n60\\n3\\n1\\nHW1\\n100\\n100\\n6\\n0\" | timeout 25 ./grade_calc",
+      "input": "",
+      "output": "40%",
+      "comparison": "included",
+      "timeout": 30,
+      "points": 15
+    },
+    {
+      "name": "Manage Categories",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n2\\nTest1\\n50\\nTest2\\n9\\n1\\n0\" | timeout 20 ./grade_calc",
+      "input": "",
+      "output": "Test1",
+      "comparison": "included",
+      "timeout": 25,
+      "points": 15
+    }
+  ]
+}

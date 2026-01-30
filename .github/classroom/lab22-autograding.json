@@ -1,0 +1,84 @@
+{
+  "tests": [
+    {
+      "name": "Compilation",
+      "setup": "",
+      "run": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Exceptions.h Exists",
+      "setup": "",
+      "run": "test -f Exceptions.h && echo \"Exceptions.h found\"",
+      "input": "",
+      "output": "Exceptions.h found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Custom Exception Class",
+      "setup": "",
+      "run": "grep -E \"class\\s+\\w+Exception\\s*:\\s*public\" Exceptions.h && echo \"Custom exception found\"",
+      "input": "",
+      "output": "Custom exception found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Try-Catch Usage",
+      "setup": "",
+      "run": "grep -E \"try\\s*\\{\" main.cpp && grep -E \"catch\\s*\\(\" main.cpp && echo \"Try-catch found\"",
+      "input": "",
+      "output": "Try-catch found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "FileManager.h Exists",
+      "setup": "",
+      "run": "test -f FileManager.h && echo \"FileManager.h found\"",
+      "input": "",
+      "output": "FileManager.h found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "File Not Found Handling",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp && rm -f nonexistent.dat",
+      "run": "echo -e \"11\\nnonexistent.dat\\n0\\nn\" | timeout 15 ./grade_calc",
+      "input": "",
+      "output": "not found",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    },
+    {
+      "name": "Save Functionality",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n2\\nHW\\n50\\nExam\\n2\\n90\\n80\\n70\\n60\\n10\\ntest_save.dat\\n0\\nn\" | timeout 20 ./grade_calc && test -f test_save.dat && echo \"File saved\"",
+      "input": "",
+      "output": "File saved",
+      "comparison": "included",
+      "timeout": 25,
+      "points": 15
+    },
+    {
+      "name": "Error Recovery",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"3\\n0\\nn\" | timeout 15 ./grade_calc",
+      "input": "",
+      "output": "GOODBYE",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 20
+    }
+  ]
+}

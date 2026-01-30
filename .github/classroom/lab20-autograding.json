@@ -1,0 +1,74 @@
+{
+  "tests": [
+    {
+      "name": "Compilation",
+      "setup": "",
+      "run": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Algorithm Header",
+      "setup": "",
+      "run": "grep -E \"#include\\s*<algorithm>\" main.cpp && echo \"Algorithm included\"",
+      "input": "",
+      "output": "Algorithm included",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Lambda Functions",
+      "setup": "",
+      "run": "grep -E \"\\[\\s*[&=]?\\s*\\]\\s*\\(\" main.cpp && echo \"Lambda found\"",
+      "input": "",
+      "output": "Lambda found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 15
+    },
+    {
+      "name": "Sort Function",
+      "setup": "",
+      "run": "grep -E \"std::sort\" main.cpp && echo \"Sort found\"",
+      "input": "",
+      "output": "Sort found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Sort Options",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n1000\\n90\\n80\\n70\\n60\\n2\\n1\\nHW\\n100\\n90\\n3\\n0\" | timeout 15 ./grade_calc",
+      "input": "",
+      "output": "Sort",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    },
+    {
+      "name": "Filter Feature",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n1000\\n90\\n80\\n70\\n60\\n2\\n1\\nHW\\n100\\n90\\n4\\n0\" | timeout 15 ./grade_calc",
+      "input": "",
+      "output": "Filter",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    },
+    {
+      "name": "Search Feature",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n1000\\n90\\n80\\n70\\n60\\n2\\n1\\nHomework1\\n100\\n90\\n5\\nHomework\\n0\" | timeout 20 ./grade_calc",
+      "input": "",
+      "output": "found",
+      "comparison": "included",
+      "timeout": 25,
+      "points": 25
+    }
+  ]
+}

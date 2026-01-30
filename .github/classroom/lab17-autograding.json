@@ -1,0 +1,84 @@
+{
+  "tests": [
+    {
+      "name": "Compilation",
+      "setup": "",
+      "run": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "GradedItem.h Exists",
+      "setup": "",
+      "run": "test -f GradedItem.h && echo \"GradedItem.h found\"",
+      "input": "",
+      "output": "GradedItem.h found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Derived Classes Exist",
+      "setup": "",
+      "run": "test -f Homework.h && test -f Quiz.h && test -f Exam.h && echo \"All derived classes found\"",
+      "input": "",
+      "output": "All derived classes found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Inheritance Implementation",
+      "setup": "",
+      "run": "grep -E \"public\\s+GradedItem\" Homework.h && echo \"Inheritance found\"",
+      "input": "",
+      "output": "Inheritance found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Virtual Methods",
+      "setup": "",
+      "run": "grep -E \"virtual\" GradedItem.h && echo \"Virtual methods found\"",
+      "input": "",
+      "output": "Virtual methods found",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 10
+    },
+    {
+      "name": "Category Selection",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n1000\\n90\\n80\\n70\\n60\\n2\\n1\\nHW1\\n100\\n95\\n0\" | timeout 15 ./grade_calc",
+      "input": "",
+      "output": "Homework",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 15
+    },
+    {
+      "name": "Weight Display",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n1000\\n90\\n80\\n70\\n60\\n2\\n0\" | timeout 15 ./grade_calc",
+      "input": "",
+      "output": "20%",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 10
+    },
+    {
+      "name": "Weighted Calculation",
+      "setup": "g++ -std=c++17 -o grade_calc main.cpp greeting.cpp",
+      "run": "echo -e \"1\\n1000\\n90\\n80\\n70\\n60\\n2\\n1\\nHW\\n100\\n100\\n2\\n3\\nExam\\n100\\n80\\n5\\n0\" | timeout 20 ./grade_calc",
+      "input": "",
+      "output": "WEIGHTED",
+      "comparison": "included",
+      "timeout": 25,
+      "points": 25
+    }
+  ]
+}
